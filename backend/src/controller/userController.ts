@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { FriendsInterface, UserDataInterface } from "../entities.js";
 import { User } from "../database/userSchema.js";
 import { findFriends } from "../services/findFriends.js";
+import { getRepositoryDataAndSave } from "../services/fetchRepository.js";
 
 export const userController = () => {
 
@@ -23,14 +24,14 @@ export const userController = () => {
             // handle all invalid userNames
             if(data.message === "Not Found") return res.status(400).json({ status: false, message: "User Not Found" })
                 
-            const friends = await findFriends(data.following_url, data.followers_url)
+           
+                const user = new User(data)
+                await user.save()
+
+                const repoData = await getRepositoryDataAndSave(user.login,user.repos_url)
 
 
-
-            const userData = await saveUserData(data,friends)
-
-
-            res.status(200).json({ message: 'Data fetched and saved successfully', userData })
+                res.status(200).json({ message: 'Data fetched and saved successfully', user, repoData })
 
 
         } catch (error) {
@@ -40,20 +41,12 @@ export const userController = () => {
     }
 
 
-    //desc: save the information in the database
-    const saveUserData = async (userData: UserDataInterface, friends:any) => {
-        try {
+    const getFollowers = async (req: Request, res: Response) => {
 
-            const user = new User(userData)
-            user.friends = friends
-            await user.save()
-
-            return user;
-
-        } catch (error) {
-            console.log(error)
-        }
     }
+
+
+
 
 
     return {

@@ -10,7 +10,8 @@ export interface UserDataInterface{
     public_repos:number,
     public_gists:number,
     message?:string,
-    friends?:string[]
+    friends?:string[],
+    repos_url?:string
     
 }
 

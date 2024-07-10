@@ -36,6 +36,10 @@ const userSchema = new Schema({
         type: Number,
         required: true
     },
+    repos_url: {
+        type: String,
+        required: true
+    },
     public_gists: {
         type: Number,
         required: true
