@@ -205,8 +205,8 @@
   margin-bottom: 10px;
 }
 
-.repo-plan-button {
-  background-color: #4CAF50;
+.repo-delete-button {
+  background-color: rgb(202, 89, 89) ;
   color: #fff;
   border: none;
   border-radius: 5px;

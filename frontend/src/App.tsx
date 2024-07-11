@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { UserInfo } from './components/UserInfo'
 import { RepoList } from './components/RepoList'
@@ -34,6 +34,8 @@ function App() {
     }
   }
 
+
+
   
 
   return (
@@ -49,7 +51,7 @@ function App() {
       </div>
 
       {/* repoList */}
-      <RepoList data={repoData} />
+      <RepoList data={repoData} fetchUserData={fetchUserData} />
 
 
     </div>

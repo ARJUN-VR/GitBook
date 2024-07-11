@@ -45,11 +45,6 @@ const userSchema = new Schema({
         type: Number,
         required: true
     },
-    is_deleted:{
-        type: Boolean,
-        required:false,
-        default: false
-    },
     friends:{
         type: Array,
         required:false

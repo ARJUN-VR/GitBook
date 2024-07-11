@@ -4,6 +4,7 @@ import { FriendsInterface, UserDataInterface } from "../entities.js";
 import { User } from "../database/userSchema.js";
 import { findFriends } from "../services/findFriends.js";
 import { getRepositoryDataAndSave } from "../services/fetchRepository.js";
+import { Repo } from "../database/repoSchema.js";
 
 export const userController = () => {
 
@@ -46,10 +47,29 @@ export const userController = () => {
     }
 
 
+    const softDelete = async (req: Request, res: Response) => {
+        try {
+
+            const username = req.query.username as string
+            const repoName = req.query.repoName as string
+
+            console.log('test',username,repoName)
+
+            await Repo.findOneAndUpdate({ owner: username.toUpperCase(), name:repoName }, { is_deleted: true })
+
+            res.status(200).json({ message: 'deleted successfully' })
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
 
 
 
     return {
-        fetchUserData
+        fetchUserData,
+        softDelete
     }
 }

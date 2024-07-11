@@ -16,6 +16,11 @@ const repoSchema = new Schema({
     image: {
         type: String,
         required: true
+    },
+    is_deleted: {
+        type: Boolean,
+        required: false,
+        default: false
     }
 });
 export const Repo = model('repo', repoSchema);

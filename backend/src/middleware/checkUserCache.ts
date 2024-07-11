@@ -11,7 +11,7 @@ export const checkUserCache = async (req: Request, res: Response, next: any) => 
     try {
 
         const userData = await User.findOne({ login: userName.toUpperCase() })
-        const repoData = await Repo.find({ owner: userName.toUpperCase() })
+        const repoData = await Repo.find({ owner: userName.toUpperCase(), is_deleted:false })
         
         if (userData) return res.status(200).json({message:'returned from cache', user: userData , repoData})
         else next()

@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { User } from "../database/userSchema.js";
 import { getRepositoryDataAndSave } from "../services/fetchRepository.js";
+import { Repo } from "../database/repoSchema.js";
 export const userController = () => {
     //route: /api/getInfo
     //desc: get information about the give Github Url and save it in the database
@@ -34,7 +35,20 @@ export const userController = () => {
     });
     const getFollowers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     });
+    const softDelete = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const username = req.query.username;
+            const repoName = req.query.repoName;
+            console.log('test', username, repoName);
+            yield Repo.findOneAndUpdate({ owner: username.toUpperCase(), name: repoName }, { is_deleted: true });
+            res.status(200).json({ message: 'deleted successfully' });
+        }
+        catch (error) {
+            console.log(error);
+        }
+    });
     return {
-        fetchUserData
+        fetchUserData,
+        softDelete
     };
 };

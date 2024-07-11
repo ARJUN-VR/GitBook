@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SingleRepo } from './SingleRepo'
 
-export const RepoList = ({data}) => {
+export const RepoList = ({data,fetchUserData}) => {
   const [isRepoOpen, setIsRepoOpen] = useState<boolean>(false)
   const [selectedRepo, setSelectedRepo] = useState<object>({})
 
@@ -12,7 +12,10 @@ export const RepoList = ({data}) => {
 
   }
 
-  const handleCloseRepo = () => setIsRepoOpen(false)
+  const handleCloseRepo = () =>{
+     console.log('working...')
+     setIsRepoOpen(false)
+  }
 
   return (
     <div className="repo-list">
@@ -30,7 +33,7 @@ export const RepoList = ({data}) => {
         <div className="repo-detail-overlay">
           <div className="repo-detail-container">
             <button className="close-button" onClick={handleCloseRepo}>Close</button>
-            <SingleRepo repo={selectedRepo} />
+            <SingleRepo repo={selectedRepo} fetchUserData={fetchUserData} closeRepo={handleCloseRepo} />
           </div>
         </div>
       )}

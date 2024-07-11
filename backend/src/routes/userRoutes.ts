@@ -9,6 +9,7 @@ const controller = userController()
 
 
 userRoutes.get('/getinfo',checkUserCache, controller.fetchUserData )
+userRoutes.patch('/softdelete', controller.softDelete)
 
 
 export default userRoutes
