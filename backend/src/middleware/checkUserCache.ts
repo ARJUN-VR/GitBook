@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { User } from "../database/userSchema.js"
+import { Repo } from "../database/repoSchema.js"
 
 export const checkUserCache = async (req: Request, res: Response, next: any) => {
 
@@ -10,8 +11,9 @@ export const checkUserCache = async (req: Request, res: Response, next: any) => 
     try {
 
         const userData = await User.findOne({ login: userName.toUpperCase() })
+        const repoData = await Repo.find({ owner: userName.toUpperCase() })
         
-        if (userData) return res.status(200).json({message:'returned from cache', data: userData })
+        if (userData) return res.status(200).json({message:'returned from cache', user: userData , repoData})
         else next()
 
     } catch (error) {
