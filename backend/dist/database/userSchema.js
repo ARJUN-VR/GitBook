@@ -6,42 +6,23 @@ const userSchema = new Schema({
     },
     name: {
         type: String,
-        required: true
+        required: false,
+        default: 'not available'
     },
     avatar_url: {
         type: String,
         required: true
     },
-    followers_url: {
-        type: String,
-        required: true
-    },
-    following_url: {
-        type: String,
-        required: true
-    },
     location: {
         type: String,
-        required: true
+        required: false
     },
     bio: {
         type: String,
         required: false
     },
-    created_at: {
-        type: String,
-        required: true
-    },
-    public_repos: {
-        type: Number,
-        required: true
-    },
     repos_url: {
         type: String,
-        required: true
-    },
-    public_gists: {
-        type: Number,
         required: true
     },
     friends: {

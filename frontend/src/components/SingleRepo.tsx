@@ -16,7 +16,7 @@ export const SingleRepo = ({ repo, fetchUserData,closeRepo }) => {
 
      
 
-      fetchUserData()
+      fetchUserData(repo.owner)
 
       closeRepo()
       
@@ -32,14 +32,7 @@ export const SingleRepo = ({ repo, fetchUserData,closeRepo }) => {
             <span className="verified">&#10004;</span> Verified by GitHub
           </div>
           <p className="repo-verified-text">GitHub confirms that this app meets the requirements for verification.</p>
-          <div className="repo-categories">
-            <p>Categories</p>
-            {/* <div className="category-tags">
-              {repo.categories.map((category, index) => (
-                <span key={index} className="category-tag">{category}</span>
-              ))}
-            </div> */}
-          </div>
+
         </div>
         <div className="repo-right">
           <h1 className="repo-title">{repo.name}</h1>

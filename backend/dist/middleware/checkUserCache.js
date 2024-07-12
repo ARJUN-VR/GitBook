@@ -15,8 +15,10 @@ export const checkUserCache = (req, res, next) => __awaiter(void 0, void 0, void
     if (!userName)
         return res.status(400).send({ status: false, message: 'username is required' });
     try {
-        const userData = yield User.findOne({ login: userName.toUpperCase() });
-        const repoData = yield Repo.find({ owner: userName.toUpperCase(), is_deleted: false });
+        const userData = yield User.findOne({ login: new RegExp(`^${userName}$`, 'i') });
+        const repoData = yield Repo.find({ owner: new RegExp(`^${userName}$`, 'i'), is_deleted: false });
+        console.log('userData', userData);
+        console.log('repoData', repoData);
         if (userData)
             return res.status(200).json({ message: 'returned from cache', user: userData, repoData });
         else

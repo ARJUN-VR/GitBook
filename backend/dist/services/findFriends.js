@@ -7,14 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-export const findFriends = (following_url, followers_url) => __awaiter(void 0, void 0, void 0, function* () {
+export const findFriends = (userName) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // removing the {/other_user} from following url
-        const cleanFollowing_url = following_url.replace('{/other_user}', '');
         // concurrently fetching following and followers
         const [followingResponse, followersResponse] = yield Promise.all([
-            fetch(cleanFollowing_url),
-            fetch(followers_url)
+            fetch(`https://api.github.com/users/${userName}/following`),
+            fetch(`https://api.github.com/users/${userName}/followers`)
         ]);
         const following_data = yield followingResponse.json();
         const followers_data = yield followersResponse.json();

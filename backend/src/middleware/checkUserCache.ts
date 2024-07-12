@@ -5,13 +5,19 @@ import { Repo } from "../database/repoSchema.js"
 export const checkUserCache = async (req: Request, res: Response, next: any) => {
 
     const userName = req.query.username as string
+
     //validate api endpoint
     if (!userName) return res.status(400).send({ status: false, message: 'username is required' })
 
     try {
 
-        const userData = await User.findOne({ login: userName.toUpperCase() })
-        const repoData = await Repo.find({ owner: userName.toUpperCase(), is_deleted:false })
+        const userData = await User.findOne({ login: new RegExp(`^${userName}$`, 'i') });
+        const repoData = await Repo.find({ owner: new RegExp(`^${userName}$`, 'i'), is_deleted:false })
+
+
+        console.log('userData', userData)
+        console.log('repoData', repoData)
+
         
         if (userData) return res.status(200).json({message:'returned from cache', user: userData , repoData})
         else next()

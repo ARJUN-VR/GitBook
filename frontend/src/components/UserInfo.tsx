@@ -1,6 +1,8 @@
+import { useState } from "react"
 
 
-export const UserInfo = ({data}) => {
+export const UserInfo = ({data, followersModal, friendsModal}) => {
+
   return (
     <div className="userInfo">
 
@@ -12,8 +14,8 @@ export const UserInfo = ({data}) => {
        {
         data.name && (
           <div style={{display: 'flex',width: '100%',justifyContent:'center',gap:'10px'}}>
-          <button>followers</button>
-          <button>friends</button>
+          <button onClick={followersModal}>followers</button>
+          <button onClick={friendsModal}>friends</button>
  
          </div>
         )

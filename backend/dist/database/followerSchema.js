@@ -6,7 +6,8 @@ const followerSchema = new Schema({
     },
     followers: {
         type: Array,
-        required: true
+        required: true,
+        default: []
     }
 });
 export const Followers = model('followers', followerSchema);

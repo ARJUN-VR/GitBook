@@ -17,9 +17,11 @@ export const RepoList = ({data,fetchUserData}) => {
      setIsRepoOpen(false)
   }
 
+  const normalizedData = Array.isArray(data) ? data : [data];
+
   return (
     <div className="repo-list">
-    {data.map((repo) => (
+    {normalizedData.map((repo) => (
       <div className="repo-card" key={repo.id} onClick={() => viewRepo(repo)}>
         <img src={repo.image} alt={repo.name} />
         <div className="repo-content">

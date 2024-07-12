@@ -1,13 +1,11 @@
-export const findFriends = async(following_url:string, followers_url:string) => {
+export const findFriends = async(userName:string) => {
     try {
 
-          // removing the {/other_user} from following url
-        const cleanFollowing_url = following_url.replace('{/other_user}', '')
 
           // concurrently fetching following and followers
         const [followingResponse, followersResponse] = await Promise.all([
-            fetch(cleanFollowing_url),
-            fetch(followers_url)
+            fetch(`https://api.github.com/users/${userName}/following`),
+            fetch(`https://api.github.com/users/${userName}/followers`)
           ]);
 
           const following_data = await followingResponse.json();
