@@ -9,11 +9,11 @@
 2. install dependencies
 
     cd backend
-    npm install
+    npm install &&
     cd ../frontend
     npm install
 
 3. start ports
 
-    backend - npm start
-    frontend = npm run dev
+    backend - npm start &&
+    frontend - npm run dev
