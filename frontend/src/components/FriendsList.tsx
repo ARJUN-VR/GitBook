@@ -42,15 +42,20 @@ export const FriendsList = ({friendsModal}:FriendsListProps) => {
     <div className='repo-detail-overlay'>
     <div className='close-button' onClick={friendsModal}>close</div>
   <div style={{width:'300px',height:'500px',backgroundColor:'black',overflowY:'scroll',paddingLeft:'15px'}} >
-      {
-          friends.map((friend)=>(
-              <div style={{display:'flex',alignItems:'center',color:'white',marginTop:'20px'}} onClick={()=>redirectToFollowers(friend.name)}>
-                <img src={friend.avatar_url} alt="" style={{width:'50px',height:'50px',borderRadius:'50%',marginRight:'10px'}} />
-                {friend.name}
-                </div>
-          ))
-      }
-
+  {
+    friends.length > 0 ? (
+      friends.map((friend) => (
+        <div key={friend.name} style={{ display: 'flex', alignItems: 'center', color: 'white', marginTop: '20px' }} onClick={() => redirectToFollowers(friend.name)}>
+          <img src={friend.avatar_url} alt="" style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }} />
+          {friend.name}
+        </div>
+      ))
+    ) : (
+      <div>
+        No friends
+      </div>
+    )
+  }
   </div>
 
   </div>
