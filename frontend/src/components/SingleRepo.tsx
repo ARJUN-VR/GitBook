@@ -1,7 +1,14 @@
-import React from 'react'
-import { toast } from 'react-toastify';
 
-export const SingleRepo = ({ repo, fetchUserData,closeRepo }) => {
+import { toast } from 'react-toastify';
+import { RepoInterface } from '../interfaces';
+
+interface SingleRepoProps{
+  repo:RepoInterface,
+  fetchUserData:(userName:string)=>void,
+  closeRepo:()=>void
+}
+
+export const SingleRepo = ({ repo, fetchUserData,closeRepo }:SingleRepoProps) => {
 
 
   const deleteRepo = async()=>{

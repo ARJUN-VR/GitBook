@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { SingleRepo } from './SingleRepo'
+import { RepoInterface } from '../interfaces'
 
-export const RepoList = ({data,fetchUserData}) => {
+interface RepoListProps {
+  data: RepoInterface[] | RepoInterface
+  fetchUserData:(userName:string)=>void
+}
+
+export const RepoList = ({data,fetchUserData}:RepoListProps) => {
   const [isRepoOpen, setIsRepoOpen] = useState<boolean>(false)
-  const [selectedRepo, setSelectedRepo] = useState<object>({})
+  const [selectedRepo, setSelectedRepo] = useState<RepoInterface| null>(null)
 
-  const viewRepo = (repo) => {
+  const viewRepo = (repo:RepoInterface) => {
     console.log('getting the clicked repo', repo)
     setIsRepoOpen(true)
     setSelectedRepo(repo)
-
   }
 
   const handleCloseRepo = () =>{
@@ -35,7 +40,9 @@ export const RepoList = ({data,fetchUserData}) => {
         <div className="repo-detail-overlay">
           <div className="repo-detail-container">
             <button className="close-button" onClick={handleCloseRepo}>Close</button>
-            <SingleRepo repo={selectedRepo} fetchUserData={fetchUserData} closeRepo={handleCloseRepo} />
+            {selectedRepo && (
+              <SingleRepo repo={selectedRepo} fetchUserData={fetchUserData} closeRepo={handleCloseRepo} />
+)}
           </div>
         </div>
       )}

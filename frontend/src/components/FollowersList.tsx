@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { FollowersInterface } from '../interfaces'
 
-export const FollowersList = ({followersModal}) => {
 
-    const [followers, setFollowers] = useState([])
+interface FollowersListProps {
+  followersModal:()=>void
+}
+
+
+
+export const FollowersList = ({followersModal}:FollowersListProps) => {
+
+    const [followers, setFollowers] = useState<FollowersInterface[]>([])
     const userName = localStorage.getItem('userName')
 
     useEffect(()=>{

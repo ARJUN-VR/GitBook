@@ -6,14 +6,15 @@ import { RepoList } from './components/RepoList'
 
 import { FollowersList } from './components/FollowersList'
 import { FriendsList } from './components/FriendsList'
+import { DataInterface, RepoInterface } from './interfaces'
 
 function App() {
 
   const [userName, setUserName] = useState<string>('')
 
-  const [userData, setUserData] = useState<object>({})
+  const [userData, setUserData] = useState<DataInterface | null>(null)
 
-  const [repoData, setRepoData] = useState<string[]>([])
+  const [repoData, setRepoData] = useState<RepoInterface[]>([])
 
 
   const [showFollowers, setShowFollowers] = useState<boolean>(false)
@@ -100,11 +101,21 @@ function App() {
       </div>
       {/* {userInfo} */}
       <div style={{ width:'100%',display:'flex',justifyContent:'center',backgroundColor:'antiquewhite'}}>
-      <UserInfo data={userData} followersModal={followersModal} friendsModal={friendsModal}/>
+        {
+          userData &&(
+
+            <UserInfo data={userData} followersModal={followersModal} friendsModal={friendsModal}/>
+          )
+        }
       </div>
 
       {/* repoList */}
-      <RepoList data={repoData} fetchUserData={fetchUserData} />
+      {
+        repoData && (
+
+          <RepoList data={repoData} fetchUserData={fetchUserData} />
+        )
+      }
 
       {/* followers list */}
 

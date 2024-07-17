@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
+import { FriendsInterface } from '../interfaces'
 
-export const FriendsList = ({friendsModal}) => {
+interface FriendsListProps{
+  friendsModal:()=>void
+}
 
-    const [friends, setFriends] = useState([])
+export const FriendsList = ({friendsModal}:FriendsListProps) => {
+
+    const [friends, setFriends] = useState<FriendsInterface[]>([])
     const userName = localStorage.getItem('userName')
 
     useEffect(()=>{

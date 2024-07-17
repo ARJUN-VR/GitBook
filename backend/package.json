@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.ts",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "start": "node ./dist/app.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

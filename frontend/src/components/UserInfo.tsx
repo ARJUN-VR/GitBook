@@ -1,7 +1,13 @@
-import { useState } from "react"
+import { DataInterface } from "../interfaces"
 
 
-export const UserInfo = ({data, followersModal, friendsModal}) => {
+interface UserInfoProp{
+  data:DataInterface,
+  followersModal:()=>void,
+  friendsModal:()=>void
+}
+
+export const UserInfo = ({data, followersModal, friendsModal}:UserInfoProp) => {
 
   return (
     <div className="userInfo">
