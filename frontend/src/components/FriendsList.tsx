@@ -52,7 +52,7 @@ export const FriendsList = ({friendsModal}:FriendsListProps) => {
       ))
     ) : (
       <div>
-        No friends
+        <span style={{color:'white',fontWeight:'bold'}}>No friends</span>
       </div>
     )
   }
