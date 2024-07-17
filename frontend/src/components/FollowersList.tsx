@@ -35,7 +35,7 @@ export const FollowersList = ({followersModal}:FollowersListProps) => {
     },[])
 
     const redirectToFollowers = (follower:string) =>{
-      window.open(`http:localhost:5173?userName=${follower}`)
+      window.open(`https://gitbook.arjunvr.live?userName=${follower}`)
     }
 
   return (
