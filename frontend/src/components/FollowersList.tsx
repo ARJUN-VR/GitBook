@@ -18,7 +18,7 @@ export const FollowersList = ({followersModal}:FollowersListProps) => {
     const getFollowers = async()=>{
         try {
 
-          const res =   await fetch(`http://localhost:3500/api/getFollowers?userName=${userName}`)
+          const res =   await fetch(`https://gitbook.arjunvr.live/api/getFollowers?userName=${userName}`)
 
           const followersList = await res.json()
 

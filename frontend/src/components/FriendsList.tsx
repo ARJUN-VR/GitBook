@@ -15,7 +15,7 @@ export const FriendsList = ({friendsModal}:FriendsListProps) => {
     const getFriends = async()=>{
         try {
 
-          const res =   await fetch(`http://localhost:3500/api/getfriends?userName=${userName}`)
+          const res =   await fetch(`https://gitbook.arjunvr.live/api/getfriends?userName=${userName}`)
 
           const friendsData = await res.json()
 

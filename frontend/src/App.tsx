@@ -40,7 +40,7 @@ function App() {
   const fetchUserData = async (userName:string) => {
     try {
 
-      const res = await fetch(`http://localhost:3500/api/getinfo?username=${userName}`)
+      const res = await fetch(`https://gitbook.arjunvr.live/api/getinfo?username=${userName}`)
       const data = await res.json()
       console.log('data',data)
 

@@ -16,7 +16,7 @@ export const SingleRepo = ({ repo, fetchUserData,closeRepo }:SingleRepoProps) =>
 
       console.log('owner',repo.owner,'name',repo.name)
 
-      await fetch(`http://localhost:3500/api/softdelete?username=${repo.owner}&repoName=${repo.name}`,{
+      await fetch(`https://gitbook.arjunvr.live/api/softdelete?username=${repo.owner}&repoName=${repo.name}`,{
         method:'PATCH'
       })
       toast.success('repo deleted.')
