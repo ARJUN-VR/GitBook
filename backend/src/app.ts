@@ -29,7 +29,7 @@ if ( environments === 'Production') {
   app.use(express.static(path.join( productionParendDir , '/frontend/dist')));
 
   app.get('*', (req, res) =>
-    res.sendFile(path.resolve( productionParendDir , 'frontend', 'dist', 'index.html'))
+    res.sendFile(path.resolve(  productionParendDir , 'frontend', 'dist', 'index.html'))
   );
 
 } else {
