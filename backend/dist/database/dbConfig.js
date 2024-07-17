@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import mongoose from "mongoose";
 export const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose.connect('mongodb://127.0.0.1:27017/gitBook');
+        yield mongoose.connect('mongodb+srv://arjarjun2004:YXQdRmhGx06vA6fZ@clustergitbook.hycrdb0.mongodb.net/');
         console.log('Connected to MongoDB');
     }
     catch (error) {

@@ -40,6 +40,7 @@ if ( environments === 'Production') {
   );
 }
 
+
 const port: number = 3500;
 
 app.listen(port, () => {
